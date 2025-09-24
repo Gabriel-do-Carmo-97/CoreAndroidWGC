@@ -45,5 +45,16 @@ jobs:
           name: core-debug.aar
           path: ./core/build/outputs/aar/core-debug.aar
 
+      - name: 📦 Build Release AAR
+        run: ./gradlew :core:assembleRelease
+
+      - name: ⬆️ Upload Release AAR
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: core-debug.aar
+          path: ./core/build/outputs/aar/core-release.aar
+
+
       - name: Build with Gradle
         run: ./gradlew build
