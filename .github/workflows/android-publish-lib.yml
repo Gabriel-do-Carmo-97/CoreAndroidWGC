@@ -32,6 +32,9 @@ jobs:
       - name: 🤖 Setup Android SDK
         uses: android-actions/setup-android@v3
 
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
       - name: 📦 Build Debug AAR
         run: ./gradlew :core:assembleDebugAar
 
@@ -42,7 +45,5 @@ jobs:
           name: core-debug.aar
           path: ./core/build/outputs/aar/core-debug.aar
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
       - name: Build with Gradle
         run: ./gradlew build
