@@ -1,13 +1,15 @@
-name: Android CI
+name: Android Publish Lib
 
 on:
   push:
-    branches: [ "master" ]
+    branches:
+      - 'master/**'
   pull_request:
-    branches: [ "master" ]
+    branches:
+      - 'master/**'
 
 jobs:
-  build:
+  build_Test_and_publish:
 
     runs-on: ubuntu-latest
 
