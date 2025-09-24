@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "CoreAndroidWGC"
 include(":app")
- 
+include(":core")
