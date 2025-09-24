@@ -36,7 +36,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: 📦 Build Debug AAR
-        run: ./gradlew :core:assembleDebugAar
+        run: ./gradlew :core:assembleDebug
 
       - name: ⬆️ Upload Debug AAR
         if: success()
