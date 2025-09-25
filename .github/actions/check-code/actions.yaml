@@ -1,0 +1,31 @@
+name: 'Check Code Quality'
+description: 'Verify quality code'
+
+runs:
+  using: "composite"
+  steps:
+    - name: 🔎 Run Android Lint Debug
+      run: ./gradlew :core:lintDebug
+
+    - name: ⬆️ Upload Lint Report Debug
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: lint-report-debug.html
+        path: |
+          ./core/build/reports/lint-results-debug.html
+          ./core/build/reports/lint-results-debug.xml
+          ./core/build/reports/lint-results-debug.txt
+
+    - name: 🔎 Run Android Lint Release
+      run: ./gradlew :core:lintRelease
+
+    - name: ⬆️ Upload Lint Report Release
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: lint-report-release.html
+        path: |
+          ./core/build/reports/lint-results-release.html
+          ./core/build/reports/lint-results-release.xml
+          ./core/build/reports/lint-results-release.txt
