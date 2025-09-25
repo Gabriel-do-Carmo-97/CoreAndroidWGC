@@ -1,0 +1,32 @@
+name: 'AAR LIB Debug And Release'
+description: 'Create AAR lib upload Artifact'
+inputs:
+  java-version:
+    description: 'Java version to use'
+    required: false
+    default: '17'
+
+runs:
+  using: "composite"
+  steps:
+    - name: 📦 Build Debug AAR
+      run: ./gradlew :core:assembleDebug
+      shell: bash
+
+    - name: ⬆️ Upload Debug AAR
+      if: success()
+      uses: actions/upload-artifact@v4
+      with:
+        name: core-debug.aar
+        path: ./core/build/outputs/aar/core-debug.aar
+
+    - name: 📦 Build Release AAR
+      run: ./gradlew :core:assembleRelease
+      shell: bash
+
+    - name: ⬆️ Upload Release AAR
+      if: success()
+      uses: actions/upload-artifact@v4
+      with:
+        name: core-release.aar
+        path: ./core/build/outputs/aar/core-release.aar
