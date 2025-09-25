@@ -35,7 +35,26 @@ jobs:
         uses: ./.github/actions/aar-lib-version
         with:
           java-version: '17'
+  code_quality_check:
+    name: Code Quality Check
+    runs-on: ubuntu-latest
+    needs: build_Test_and_publish
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+        shell: bash
+
+      - name: Setup Android Environment and permission
+        uses: ./.github/actions/setup-android
+        with:
+          java-version: '17'
 
       - name: Check Code Quality
         uses: ./.github/actions/check-code
+
 
