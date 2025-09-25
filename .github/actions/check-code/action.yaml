@@ -6,6 +6,7 @@ runs:
   steps:
     - name: 🔎 Run Android Lint Debug
       run: ./gradlew :core:lintDebug
+      shell: bash
 
     - name: ⬆️ Upload Lint Report Debug
       if: always()
@@ -19,6 +20,7 @@ runs:
 
     - name: 🔎 Run Android Lint Release
       run: ./gradlew :core:lintRelease
+      shell: bash
 
     - name: ⬆️ Upload Lint Report Release
       if: always()
