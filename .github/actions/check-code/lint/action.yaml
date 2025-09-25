@@ -1,4 +1,4 @@
-name: 'Check Code Quality'
+name: 'Lint Check Code Quality'
 description: 'Verify quality code'
 
 runs:
@@ -12,7 +12,7 @@ runs:
       if: always()
       uses: actions/upload-artifact@v4
       with:
-        name: lint-report-debug.html
+        name: lint-report-debug
         path: |
           ./core/build/reports/lint-results-debug.html
           ./core/build/reports/lint-results-debug.xml
@@ -26,7 +26,7 @@ runs:
       if: always()
       uses: actions/upload-artifact@v4
       with:
-        name: lint-report-release.html
+        name: lint-report-release
         path: |
           ./core/build/reports/lint-results-release.html
           ./core/build/reports/lint-results-release.xml
