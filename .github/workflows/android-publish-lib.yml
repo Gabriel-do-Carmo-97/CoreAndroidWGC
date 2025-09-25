@@ -55,6 +55,6 @@ jobs:
           java-version: '17'
 
       - name: Check Code Quality
-        uses: ./.github/actions/check-code/lint
+        uses: ./.github/workflows/check-code-quality.yaml
 
 

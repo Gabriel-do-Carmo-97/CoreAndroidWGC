@@ -8,16 +8,13 @@ runs:
       run: ./gradlew :core:ktlintCheck
       shell: bash
 
-    - name: ⬆️ Upload KLint Check Report
+    - name: 🔎 Run Android KtLint Format
+      run: ./gradlew :core:ktlintFormat
+      shell: bash
+
+    - name: ⬆️ Upload All KLint Check Reports
       if: always()
       uses: actions/upload-artifact@v4
       with:
         name: ktlint-report.html
-        path: |
-          - ./core/build/reports/ktlint/ktlintAndroidTestSourceSetCheck/ktlintAndroidTestSourceSetCheck.html
-          - ./core/build/reports/ktlint/ktlintAndroidTestSourceSetCheck/ktlintAndroidTestSourceSetCheck.txt
-          - ./core/build/reports/ktlint/ktlintAndroidTestSourceSetCheck/ktlintAndroidTestSourceSetCheck.json
-          
-
-    - name: 🔎 Run Android KLint Format
-      run: ./gradlew :core:ktlintFormat
+        path: ./core/build/reports/ktlint/

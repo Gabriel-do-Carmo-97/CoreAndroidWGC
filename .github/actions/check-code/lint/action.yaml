@@ -8,26 +8,14 @@ runs:
       run: ./gradlew :core:lintDebug
       shell: bash
 
-    - name: ⬆️ Upload Lint Report Debug
-      if: always()
-      uses: actions/upload-artifact@v4
-      with:
-        name: lint-report-debug
-        path: |
-          ./core/build/reports/lint-results-debug.html
-          ./core/build/reports/lint-results-debug.xml
-          ./core/build/reports/lint-results-debug.txt
-
     - name: 🔎 Run Android Lint Release
       run: ./gradlew :core:lintRelease
       shell: bash
 
-    - name: ⬆️ Upload Lint Report Release
+    - name: ⬆️ Upload All Lint Reports Debug And Release
       if: always()
       uses: actions/upload-artifact@v4
       with:
-        name: lint-report-release
-        path: |
-          ./core/build/reports/lint-results-release.html
-          ./core/build/reports/lint-results-release.xml
-          ./core/build/reports/lint-results-release.txt
+        name: lint-report-debug
+        path: ./core/build/reports/
+
