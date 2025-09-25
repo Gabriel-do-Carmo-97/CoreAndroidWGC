@@ -17,6 +17,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+
       - name: Setup Android Environment and permission
         uses: ./.github/actions/setup-android
         with:
